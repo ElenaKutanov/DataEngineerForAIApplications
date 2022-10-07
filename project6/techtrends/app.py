@@ -4,16 +4,17 @@ import logging
 from flask import Flask, jsonify, json, render_template, request, url_for, redirect, flash
 from werkzeug.exceptions import abort
 
-db_connection_counter = 0
 
 # Define the Flask application
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your secret key'
 
+db_connection_counter = 0
+
 # Function to get a total amount of posts in the database
 def post_count():
     connection = get_db_connection()
-    count = connection.execute('SELECT COUNT(*) FROM posts').fetchone()
+    count = connection.execute('SELECT COUNT(*) FROM posts').fetchone()[0]
     connection.close()
     return count
 
@@ -27,6 +28,7 @@ def get_db_connection():
 # Function to get a post using its ID
 def get_post(post_id):
     connection = get_db_connection()
+    global db_connection_counter
     db_connection_counter += 1
     post = connection.execute('SELECT * FROM posts WHERE id = ?',
                         (post_id,)).fetchone()
@@ -47,16 +49,16 @@ def index():
 def post(post_id):
     post = get_post(post_id)
     if post is None:
-      app.log.info('The article with id "{}" didn\'t find!'.formated(post_id))
+      app.logger.info('The article with id "{}" didn\'t find!'.format(post_id))
       return render_template('404.html'), 404
     else:
-      app.log.info('Article "{}" retrieved!'.formated(post.title))
+      app.logger.info('Article "{}" retrieved!'.format(post[2]))
       return render_template('post.html', post=post)
 
 # Define the About Us page
 @app.route('/about')
 def about():
-    app.log.info('About is retrieved!')
+    app.logger.info('About is retrieved!')
     return render_template('about.html')
 
 # Define the Healthcheck endpoint
@@ -74,7 +76,8 @@ def status():
 @app.route('/metrics')
 def metrics():
     response = app.response_class(
-            response=json.dumps({"db_connection_count": db_connection_count(), "post_count": db_connection_counter}),
+            response=json.dumps({"db_connection_count": db_connection_counter,
+                "post_count": post_count() }),
             status=200,
             mimetype='application/json'
     )
@@ -96,7 +99,7 @@ def create():
                          (title, content))
             connection.commit()
             connection.close()
-            app.log.info('Article "{}" created!'.formated(title))
+            app.logger.info('Article "{}" created!'.format(title))
 
             return redirect(url_for('index'))
 
