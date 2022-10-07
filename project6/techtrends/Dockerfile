@@ -1,0 +1,15 @@
+FROM alpine:latest
+LABEL maintainer="Elena Kutanov"
+
+WORKDIR /app
+
+COPY . .
+
+RUN apk add cmd:pip
+RUN pip install -r requirements.txt
+
+EXPOSE 3111
+
+RUN apk add cmd:python3
+CMD ["python3", "init_db.py"]
+CMD ["python3", "app.py"]
