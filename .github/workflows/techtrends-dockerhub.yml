@@ -4,12 +4,13 @@ on:
   push:
     branches: [ master ]
 
+defaults:
+  run:
+    working-directory: project6/techtrends
+
 jobs:
   build:
     runs-on: alpine-latest
-    defaults:
-      run:
-        working-directory: project6/techtrends
 
     steps:
       -
