@@ -4,6 +4,7 @@ LABEL maintainer="Elena Kutanov"
 WORKDIR /opt/techtrends
 
 COPY . ./
+RUN dir -s
 
 RUN apk add cmd:pip
 RUN pip freeze > requirements.txt
