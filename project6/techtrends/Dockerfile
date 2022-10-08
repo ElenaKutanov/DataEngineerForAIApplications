@@ -11,5 +11,6 @@ RUN pip freeze > requirements.txt
 EXPOSE 3111
 
 RUN apk add cmd:python3
+COPY init_db.py /tmp/
 RUN python3 /tmp/init_db.py
 CMD ["python3", "app.py"]
