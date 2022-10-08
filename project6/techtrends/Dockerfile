@@ -6,7 +6,7 @@ WORKDIR /app
 COPY . .
 
 RUN apk add cmd:pip
-RUN pip install -r requirements.txt
+RUN pip install -r "requirements.txt"
 
 EXPOSE 3111
 
