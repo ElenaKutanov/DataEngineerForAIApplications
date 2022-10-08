@@ -3,7 +3,7 @@ LABEL maintainer="Elena Kutanov"
 
 WORKDIR /opt
 
-COPY . .
+COPY . /opt
 
 RUN apk add cmd:pip
 RUN pip freeze > requirements.txt
