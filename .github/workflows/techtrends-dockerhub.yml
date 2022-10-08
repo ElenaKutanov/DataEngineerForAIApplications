@@ -1,17 +1,19 @@
 name: Docker Build and Push
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
 defaults:
   run:
     working-directory: project6/techtrends
 
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
 jobs:
+
   build:
+
     runs-on: alpine-latest
 
     steps:
