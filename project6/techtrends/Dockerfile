@@ -4,6 +4,7 @@ LABEL maintainer="Elena Kutanov"
 WORKDIR /opt/techtrends
 
 COPY . ./
+RUN apk add cmd:dir
 RUN dir -s
 
 RUN apk add cmd:pip
