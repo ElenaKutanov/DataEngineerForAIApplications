@@ -40,5 +40,4 @@ jobs:
           file: ./project6/techtrends/Dockerfile
           platforms: linux/amd64
           push: true
-          tags: elenakutanov/techtrends:latest
-          run: docker build . --file Dockerfile --tag elenakutanov/techtrends:$(date +%s)
+          tags: elenakutanov/techtrends:$(date +%s)
