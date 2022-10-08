@@ -1,9 +1,9 @@
 FROM alpine:latest
 LABEL maintainer="Elena Kutanov"
 
-WORKDIR /opt
+WORKDIR /opt/techtrends
 
-COPY . /opt
+COPY . ./
 
 RUN apk add cmd:pip
 RUN pip freeze > requirements.txt
