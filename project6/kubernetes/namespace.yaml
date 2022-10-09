@@ -4,4 +4,3 @@ metadata:
   name: sandbox
   labels:
     name: sandbox
-kubectl apply -f namespace.yaml
