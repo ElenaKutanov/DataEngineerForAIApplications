@@ -1,0 +1,7 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: sandbox
+  labels:
+    name: sandbox
+kubectl apply -f namespace.yaml
