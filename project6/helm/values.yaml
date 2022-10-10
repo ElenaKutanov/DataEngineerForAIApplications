@@ -1,6 +1,8 @@
 namespace:
   name: sandbox
 
+appname: techtrends
+
 service:
   port: 4111
   targetPort: 3111
