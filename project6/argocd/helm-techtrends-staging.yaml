@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     helm:
-      valueFile:
+      valueFiles:
         - values-staging.yaml
     path: helm 
     repoURL: https://github.com/ElenaKutanov/de_nd/tree/main/project6
