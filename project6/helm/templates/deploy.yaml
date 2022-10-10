@@ -1,37 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: techtrends
-  namespace: sandbox
+  name: {{ .Values.appname }}
+  namespace: {{ .Values.namespace.name }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: techtrends
+      app: {{ .Values.appname }}
   template:
     metadata:
       labels:
-        app: techtrends
+        app: {{ .Values.appname }}
     spec:
       containers:
-      - image: elenakutanov/techtrends:latest
-        imagePullPolicy: IfNotPresent 
-        name: techtrends
+      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }} 
+        name: {{ .Values.appname }}
         ports:
-        - containerPort: 3111
-          protocol: TCP
-        resources:
-          requests:
-            cpu: "250m"
-            memory: "200Mi" 
-          limits:
-            cpu: "500m"
-            memory: "200Mi"
-        livenessProbe:
-          httpGet:
-            path: /healthz
-            port: 3111
-        readinessProbe:
-          httpGet:
-            path: /healthz
-            port: 3111
+        - containerPort: {{ .Values.containerPort }}
+          protocol: {{ .Values.service.protocol }}
+        resources: {{ toYaml .Values.resources | indent 10 }}
+        livenessProbe: {{ toYaml .Values.livenessProbe | indent 10 }}
+        readinessProbe: {{ toYaml .Values.readinessProbe | indent 10 }}
