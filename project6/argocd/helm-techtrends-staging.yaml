@@ -12,8 +12,8 @@ spec:
     helm:
       valueFiles:
         - values-staging.yaml
-    path: helm 
-    repoURL: https://github.com/ElenaKutanov/de_nd/tree/main/project6
+    path: project6/helm 
+    repoURL: https://github.com/ElenaKutanov/de_nd
     targetRevision: HEAD
   # Sync policy
   syncPolicy: {}
