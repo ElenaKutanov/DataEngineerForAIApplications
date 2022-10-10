@@ -8,7 +8,7 @@ RUN apk add cmd:dir
 RUN dir -s
 
 RUN apk add cmd:pip
-RUN pip freeze > requirements.txt
+RUN pip install requirements.txt
 
 EXPOSE 3111
 

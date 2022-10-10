@@ -1,8 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: techtrends
   name: techtrends
   namespace: sandbox
 spec:
@@ -10,11 +8,6 @@ spec:
   selector:
     matchLabels:
       app: techtrends
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
   template:
     metadata:
       labels:
@@ -24,15 +17,16 @@ spec:
       - image: elenakutanov/techtrends:latest
         imagePullPolicy: IfNotPresent 
         name: techtrends
+        ports:
+        - containerPort: 3111
+          protocol: TCP
         resources:
           requests:
             cpu: "250m"
-            memory: "64Mi" 
+            memory: "200Mi" 
           limits:
             cpu: "500m"
-            memory: "128Mi"
-        ports:
-        - containerPort: 3111
+            memory: "200Mi"
         livenessProbe:
           httpGet:
             path: /healthz
