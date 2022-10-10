@@ -7,6 +7,7 @@ COPY ./project6/techtrends ./
 RUN apk add cmd:dir
 RUN dir -s
 
+RUN apk add cmd:python3
 RUN apk add cmd:pip
 RUN pip install -r requirements.txt
 
