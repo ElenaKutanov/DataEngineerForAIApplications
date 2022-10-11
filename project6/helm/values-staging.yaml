@@ -3,14 +3,6 @@ namespace:
 
 service:
   port: 5111
-  targetPort: 3111
-  protocol: TCP
-  type: ClusterIP
-
-image:
-  repository: elenakutanov/techtrends 
-  tag: latest
-  pullPolicy: IfNotPresent
 
 replicaCount: 3
 
@@ -21,5 +13,3 @@ resources:
   limits:
     cpu: "500m"
     memory: "128Mi"
-
-containerPort: 3111

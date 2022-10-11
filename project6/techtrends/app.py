@@ -1,5 +1,6 @@
 import sqlite3
 import logging
+import sys
 
 from flask import Flask, jsonify, json, render_template, request, url_for, redirect, flash
 from werkzeug.exceptions import abort
@@ -23,13 +24,13 @@ def post_count():
 def get_db_connection():
     connection = sqlite3.connect('database.db')
     connection.row_factory = sqlite3.Row
+    global db_connection_counter
+    db_connection_counter += 1
     return connection
 
 # Function to get a post using its ID
 def get_post(post_id):
     connection = get_db_connection()
-    global db_connection_counter
-    db_connection_counter += 1
     post = connection.execute('SELECT * FROM posts WHERE id = ?',
                         (post_id,)).fetchone()
     connection.close()
@@ -107,5 +108,12 @@ def create():
 
 # start the application on port 3111
 if __name__ == "__main__":
-   logging.basicConfig(level=logging.DEBUG)
+   # set logger to handle STDOUT and STDERR 
+   stdout_handler =  logging.StreamHandler(sys.stdout)
+   stderr_handler =  logging.StreamHandler(sys.stderr)
+   handlers = [stderr_handler, stdout_handler]
+   # format output
+   format_output = '%(asctime)s %(name)s %(levelname)s %(message)s'
+
+   logging.basicConfig(format=format_output, level=logging.DEBUG, handlers=handlers)
    app.run(host='0.0.0.0', port='3111')
