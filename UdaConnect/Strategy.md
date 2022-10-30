@@ -32,6 +32,9 @@ copy paste in C:\Users\elena\.kube\config
 > kubectl apply -f deployment/
 > sh scripts/run_db_command.sh <POD_NAME>
 
+> docker rmi udaconnect-locations-api
+> docker rmi elenakutanov/udaconnect-locations-api
+> docker images
 
 Image API changed:
 > docker build -t udaconnect-api modules\api
@@ -56,6 +59,5 @@ udaconnect-locations-api   NodePort    10.43.82.169    <none>        5001:30002/
 > kubectl apply -f deployment/
 > kubectl get pods
 
-> docker rmi udaconnect-locations-api
-> docker rmi elenakutanov/udaconnect-locations-api
-> docker images
+> cd modules
+> docker build -t udaconnect-locations-api -f locations_api/Dockerfile .
