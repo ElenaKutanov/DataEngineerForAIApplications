@@ -30,6 +30,7 @@ copy paste in C:\Users\elena\.kube\config
 > exit
 > kubectl describe services
 > kubectl apply -f deployment/
+> kubectl get pods
 > sh scripts/run_db_command.sh <POD_NAME>
 
 > docker rmi udaconnect-locations-api
@@ -38,7 +39,10 @@ copy paste in C:\Users\elena\.kube\config
 
 Image API changed:
 > docker build -t udaconnect-api modules\api
-> docker build -t udaconnect-locations-api modules\locations_api
+
+> cd modules
+> docker build -t udaconnect-locations-api -f locations_api/Dockerfile .
+
 > docker images
 
 NAME                       TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
@@ -56,8 +60,8 @@ udaconnect-locations-api   NodePort    10.43.82.169    <none>        5001:30002/
 
 > kubectl delete deployment udaconnect-locations-api
 > kubectl delete services udaconnect-locations-api
+> cd ..
 > kubectl apply -f deployment/
 > kubectl get pods
 
-> cd modules
-> docker build -t udaconnect-locations-api -f locations_api/Dockerfile .
+
