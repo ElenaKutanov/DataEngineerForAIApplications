@@ -1,5 +1,5 @@
 from app.udaconnect.model_location import Location  # noqa
-from app.udaconnect.schemas import LocationSchema  # noqa
+from app.udaconnect.schema_location import LocationSchema  # noqa
 
 
 def register_routes(api, app, root="api"):

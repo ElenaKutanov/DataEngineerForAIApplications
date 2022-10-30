@@ -1,5 +1,5 @@
 from app.udaconnect.model_person import Person  # noqa
-from app.udaconnect.schemas import PersonSchema  # noqa
+from app.udaconnect.schema_person import PersonSchema  # noqa
 
 
 def register_routes(api, app, root="api"):

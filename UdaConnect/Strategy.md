@@ -35,6 +35,12 @@ copy paste in C:\Users\elena\.kube\config
 
 > docker rmi udaconnect-locations-api
 > docker rmi elenakutanov/udaconnect-locations-api
+
+> docker rmi udaconnect-persons-api
+> docker rmi elenakutanov/udaconnect-persons-api
+
+> docker rmi udaconnect-connection-api
+> docker rmi elenakutanov/udaconnect-connection-api
 > docker images
 
 Image API changed:
@@ -43,6 +49,7 @@ Image API changed:
 > cd modules
 > docker build -t udaconnect-locations-api -f locations_api/Dockerfile .
 > docker build -t udaconnect-persons-api -f persons_api/Dockerfile .
+> docker build -t udaconnect-connection-api -f connection_api/Dockerfile .
 
 > docker images
 
@@ -62,11 +69,17 @@ udaconnect-locations-api   NodePort    10.43.82.169    <none>        5001:30002/
 > docker image tag udaconnect-persons-api:latest elenakutanov/udaconnect-persons-api:latest
 > docker push elenakutanov/udaconnect-persons-api:latest
 
+> docker image tag udaconnect-connection-api:latest elenakutanov/udaconnect-connection-api:latest
+> docker push elenakutanov/udaconnect-connection-api:latest
+
 > kubectl delete deployment udaconnect-locations-api
 > kubectl delete services udaconnect-locations-api
 
 > kubectl delete deployment udaconnect-persons-api
 > kubectl delete services udaconnect-persons-api
+
+> kubectl delete deployment udaconnect-connection-api
+> kubectl delete services udaconnect-connection-api
 
 > cd ..
 > kubectl apply -f deployment/

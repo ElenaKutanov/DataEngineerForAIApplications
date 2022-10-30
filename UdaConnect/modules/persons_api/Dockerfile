@@ -9,5 +9,6 @@ RUN pip install -r requirements.txt
 EXPOSE 5002
 
 COPY ./persons_api/ .
-COPY ./models/ ./app/udaconnect/
+COPY ./models/model_person.py ./app/udaconnect/
+COPY ./schemas/schema_person.py ./app/udaconnect/
 CMD ["flask", "run", "--host", "0.0.0.0"]

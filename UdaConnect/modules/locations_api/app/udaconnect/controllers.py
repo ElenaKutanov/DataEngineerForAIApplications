@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from app.udaconnect.model_location import Location
-from app.udaconnect.schemas import (
+from app.udaconnect.schema_location import (
     LocationSchema
 )
 from app.udaconnect.services import LocationService

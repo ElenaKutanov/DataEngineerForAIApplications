@@ -3,7 +3,7 @@ from typing import Dict, List
 
 from app import db
 from app.udaconnect.model_person import Person
-from app.udaconnect.schemas import PersonSchema
+from app.udaconnect.schema_person import PersonSchema
 
 logging.basicConfig(level=logging.WARNING)
 logger = logging.getLogger("udaconnect-persons-api")

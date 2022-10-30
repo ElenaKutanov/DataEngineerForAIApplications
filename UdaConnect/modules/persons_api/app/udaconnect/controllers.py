@@ -1,5 +1,5 @@
 from app.udaconnect.model_person import Person
-from app.udaconnect.schemas import PersonSchema
+from app.udaconnect.schema_person import PersonSchema
 from app.udaconnect.services import PersonService
 
 from flask import request

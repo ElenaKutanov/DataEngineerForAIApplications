@@ -10,4 +10,5 @@ EXPOSE 5001
 
 COPY ./locations_api/ .
 COPY ./models/ ./app/udaconnect/
+COPY ./schemas/schema_location.py ./app/udaconnect/
 CMD ["flask", "run", "--host", "0.0.0.0"]
