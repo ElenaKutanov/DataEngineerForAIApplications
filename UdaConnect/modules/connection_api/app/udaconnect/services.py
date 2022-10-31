@@ -10,6 +10,9 @@ from app.udaconnect.model_person import Person
 from app.udaconnect.schema_connection import ConnectionSchema
 from sqlalchemy.sql import text
 
+import app.grpc.person_pb2
+import app.grpc.person_pb2_grpc
+
 logging.basicConfig(level=logging.WARNING)
 logger = logging.getLogger("udaconnect-api")
 

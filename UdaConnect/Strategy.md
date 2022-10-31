@@ -103,3 +103,9 @@ udaconnect-locations-api                 latest    74b059ee834f   21 hours ago  
 > kubectl get pods
 
 
+# gRPC
+
+> python -m grpc_tools.protoc -I./ --python_out=./ --grpc_python_out=./ person.proto
+
+
+

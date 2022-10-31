@@ -11,4 +11,5 @@ EXPOSE 5003
 COPY ./connection_api/ .
 COPY ./models/ ./app/udaconnect/
 COPY ./schemas/ ./app/udaconnect/
+COPY ./grpc/ ./app/grpc/
 CMD ["flask", "run", "--host", "0.0.0.0"]
