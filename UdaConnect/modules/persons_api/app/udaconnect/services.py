@@ -8,7 +8,6 @@ from app.udaconnect.schema_person import PersonSchema
 logging.basicConfig(level=logging.WARNING)
 logger = logging.getLogger("udaconnect-persons-api")
 
-
 class PersonService:
     @staticmethod
     def create(person: Dict) -> Person:

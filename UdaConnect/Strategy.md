@@ -50,7 +50,7 @@ copy paste in C:\Users\elena\.kube\config
 
 Image API changed:
 
-> docker build -t udaconnect-app modules\frontend
+> docker build -t udaconnect-app modules/frontend
 
 > cd modules
 > docker build -t udaconnect-locations-api -f locations_api/Dockerfile .

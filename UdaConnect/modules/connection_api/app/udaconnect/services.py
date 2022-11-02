@@ -10,11 +10,11 @@ from app.udaconnect.model_person import Person
 from app.udaconnect.schema_connection import ConnectionSchema
 from sqlalchemy.sql import text
 
-import app.grpc.person_pb2
-import app.grpc.person_pb2_grpc
+from app.udaconnect.grpc_client import GRPC_client
 
 logging.basicConfig(level=logging.WARNING)
 logger = logging.getLogger("udaconnect-api")
+grpc_client = GRPC_client()
 
 
 class ConnectionService:
@@ -35,7 +35,9 @@ class ConnectionService:
         ).all()
 
         # Cache all users in memory for quick lookup
-        person_map: Dict[str, Person] = {person.id: person for person in PersonService.retrieve_all()}
+        persons = grpc_client.persons_retrieve_all()
+        logger.info('persons from grpc:', persons)
+        person_map: Dict[str, Person] = {person.id: person for person in persons}
 
         # Prepare arguments for queries
         data = []
