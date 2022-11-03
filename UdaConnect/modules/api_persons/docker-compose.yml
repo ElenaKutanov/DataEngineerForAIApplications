@@ -1,0 +1,15 @@
+version: "3"
+services:
+  web:
+    build:
+        context: ./restful
+    image: udaconnect-api-persons
+    ports:
+       - "5003:5003"
+   
+  grpc:
+    build:
+        context: ./grpc_server
+    image: udaconnect-api-persons-grpc
+    ports:
+       - "5004:5004"

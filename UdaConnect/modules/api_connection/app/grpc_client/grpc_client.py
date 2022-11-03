@@ -2,8 +2,8 @@ import logging
 
 import grpc
 
-from person_pb2 import Empty
-from person_pb2_grpc import PersonServiceStub
+from app.grpc_client.person_pb2 import Empty
+from app.grpc_client.person_pb2_grpc import PersonServiceStub
 
 """
 Used to send get all persons gRPC message to persons microservice.

@@ -13,6 +13,6 @@ EXPOSE 5002
 
 COPY ./api_connection/ .
 
-RUN python -m grpc_tools.protoc -I./app/grpc_client/ --python_out=./app/grpc_client/ --grpc_python_out=./app/grpc_client/ person.proto
+# RUN python -m grpc_tools.protoc -I./app/grpc_client/ --python_out=./app/grpc_client/ --grpc_python_out=./app/grpc_client/ person.proto
 
 CMD ["flask", "run", "--host", "0.0.0.0", "--port", "5002"]

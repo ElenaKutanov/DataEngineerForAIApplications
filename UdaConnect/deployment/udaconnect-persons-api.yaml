@@ -35,7 +35,8 @@ spec:
       containers:
       - image: elenakutanov/udaconnect-api-persons:latest
         name: udaconnect-api-persons
-        command: ["flask", "run", "--host", "0.0.0.0", "--port", "5003"]
+        ports:
+        - containerPort: 5003
         imagePullPolicy: Always
         env:
         - name: DB_USERNAME
@@ -63,9 +64,10 @@ spec:
             configMapKeyRef:
               name: db-env
               key: DB_PORT
-      - image: elenakutanov/udaconnect-api-persons:latest
+      - image: elenakutanov/udaconnect-api-persons-grpc:latest
         name: udaconnect-persons-grpc-server
-        command: ["python", "./grpc_server/grpc_server.py"]
+        ports:
+        - containerPort: 5004
         imagePullPolicy: Always
         env:
         - name: DB_USERNAME
