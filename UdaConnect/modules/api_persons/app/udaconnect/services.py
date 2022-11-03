@@ -5,8 +5,8 @@ from app import db
 from app.udaconnect.model_person import Person
 from app.udaconnect.schema_person import PersonSchema
 
-logging.basicConfig(level=logging.WARNING)
-logger = logging.getLogger("udaconnect-persons-api")
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger("udaconnect-api-persons")
 
 class PersonService:
     @staticmethod

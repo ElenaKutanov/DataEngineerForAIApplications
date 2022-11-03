@@ -12,8 +12,3 @@ docker build -t udaconnect-app modules/frontend
 # Tag and push the images to DockerHub
 docker image tag udaconnect-app:latest elenakutanov/udaconnect-app:latest
 docker push elenakutanov/udaconnect-app:latest
-
-# Apply deployments
-kubectl apply -f deployment/
-
-kubectl get pods

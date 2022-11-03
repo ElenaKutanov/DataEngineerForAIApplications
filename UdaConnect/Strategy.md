@@ -38,14 +38,14 @@ copy paste in C:\Users\elena\.kube\config
 > docker rmi udaconnect-app
 > docker rmi elenakutanov/udaconnect-app
 
-> docker rmi udaconnect-locations-api
-> docker rmi elenakutanov/udaconnect-locations-api
+> docker rmi udaconnect-api-locations
+> docker rmi elenakutanov/udaconnect-api-locations
 
-> docker rmi udaconnect-persons-api
-> docker rmi elenakutanov/udaconnect-persons-api
+> docker rmi udaconnect-api-persons
+> docker rmi elenakutanov/udaconnect-api-persons
 
-> docker rmi udaconnect-connection-api
-> docker rmi elenakutanov/udaconnect-connection-api
+> docker rmi udaconnect-api-connection
+> docker rmi elenakutanov/udaconnect-api-connection
 > docker images
 
 Image API changed:
@@ -53,21 +53,21 @@ Image API changed:
 > docker build -t udaconnect-app modules/frontend
 
 > cd modules
-> docker build -t udaconnect-locations-api -f locations_api/Dockerfile .
-> docker build -t udaconnect-persons-api -f persons_api/Dockerfile .
-> docker build -t udaconnect-connection-api -f connection_api/Dockerfile .
+> docker build -t udaconnect-api-locations -f api_locations/Dockerfile .
+> docker build -t udaconnect-api-persons -f api_persons/Dockerfile .
+> docker build -t udaconnect-api-connection -f api_connection/Dockerfile .
 
 > docker images
 
 REPOSITORY                               TAG       IMAGE ID       CREATED         SIZE
 elenakutanov/udaconnect-app              latest    0d7dafa39ac9   5 minutes ago   551MB
 udaconnect-app                           latest    0d7dafa39ac9   5 minutes ago   551MB
-udaconnect-connection-api                latest    6272eb584bf5   21 hours ago    547MB
-elenakutanov/udaconnect-connection-api   latest    6272eb584bf5   21 hours ago    547MB
-elenakutanov/udaconnect-persons-api      latest    2dfcf333dc3d   21 hours ago    547MB
-udaconnect-persons-api                   latest    2dfcf333dc3d   21 hours ago    547MB
-elenakutanov/udaconnect-locations-api    latest    74b059ee834f   21 hours ago    547MB
-udaconnect-locations-api                 latest    74b059ee834f   21 hours ago    547MB
+udaconnect-api-connection                latest    6272eb584bf5   21 hours ago    547MB
+elenakutanov/udaconnect-api-connection   latest    6272eb584bf5   21 hours ago    547MB
+elenakutanov/udaconnect-api-persons      latest    2dfcf333dc3d   21 hours ago    547MB
+udaconnect-api-persons                   latest    2dfcf333dc3d   21 hours ago    547MB
+elenakutanov/udaconnect-api-locations    latest    74b059ee834f   21 hours ago    547MB
+udaconnect-api-locations                 latest    74b059ee834f   21 hours ago    547MB
 
 
 > docker image tag udaconnect-app:latest elenakutanov/udaconnect-app:latest
@@ -76,27 +76,27 @@ udaconnect-locations-api                 latest    74b059ee834f   21 hours ago  
 > docker image tag udaconnect-api:latest elenakutanov/udaconnect-api:latest
 > docker push elenakutanov/udaconnect-api:latest
 
-> docker image tag udaconnect-locations-api:latest elenakutanov/udaconnect-locations-api:latest
-> docker push elenakutanov/udaconnect-locations-api:latest
+> docker image tag udaconnect-api-locations:latest elenakutanov/udaconnect-api-locations:latest
+> docker push elenakutanov/udaconnect-api-locations:latest
 
-> docker image tag udaconnect-persons-api:latest elenakutanov/udaconnect-persons-api:latest
-> docker push elenakutanov/udaconnect-persons-api:latest
+> docker image tag udaconnect-api-persons:latest elenakutanov/udaconnect-api-persons:latest
+> docker push elenakutanov/udaconnect-api-persons:latest
 
-> docker image tag udaconnect-connection-api:latest elenakutanov/udaconnect-connection-api:latest
-> docker push elenakutanov/udaconnect-connection-api:latest
+> docker image tag udaconnect-api-connection:latest elenakutanov/udaconnect-api-connection:latest
+> docker push elenakutanov/udaconnect-api-connection:latest
 
 
 > kubectl delete deployment udaconnect-app
 > kubectl delete services udaconnect-app
 
-> kubectl delete deployment udaconnect-locations-api
-> kubectl delete services udaconnect-locations-api
+> kubectl delete deployment udaconnect-api-locations
+> kubectl delete services udaconnect-api-locations
 
-> kubectl delete deployment udaconnect-persons-api
-> kubectl delete services udaconnect-persons-apic
+> kubectl delete deployment udaconnect-api-persons
+> kubectl delete services udaconnect-api-personsc
 
-> kubectl delete deployment udaconnect-connection-api
-> kubectl delete services udaconnect-connection-api
+> kubectl delete deployment udaconnect-api-connection
+> kubectl delete services udaconnect-api-connection
 
 > cd ..
 > kubectl apply -f deployment/
@@ -109,3 +109,5 @@ udaconnect-locations-api                 latest    74b059ee834f   21 hours ago  
 
 
 
+# Check container
+> kubectl exec --stdin --tty udaconnect-api-persons-866b867d46-4hstx -- /bin/sh

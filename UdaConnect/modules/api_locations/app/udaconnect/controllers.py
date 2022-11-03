@@ -1,9 +1,7 @@
 from datetime import datetime
 
 from app.udaconnect.model_location import Location
-from app.udaconnect.schema_location import (
-    LocationSchema
-)
+from app.udaconnect.schema_location import LocationSchema
 from app.udaconnect.services import LocationService
 from flask import request
 from flask_accepts import accepts, responds
