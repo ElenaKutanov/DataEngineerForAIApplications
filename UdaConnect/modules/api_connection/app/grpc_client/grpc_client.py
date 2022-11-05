@@ -16,7 +16,7 @@ class GRPC_client:
     def __init__(self):
         print("Sending grpc persons retrive all...")
 
-        channel = grpc.insecure_channel("localhost:5004")
+        channel = grpc.insecure_channel("udaconnect-api-persons:5004")
         self.client = PersonServiceStub(channel)
 
 

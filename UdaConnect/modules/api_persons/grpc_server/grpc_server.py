@@ -5,7 +5,10 @@ import grpc
 from concurrent import futures
 from person_pb2 import PersonMessage, PersonMessageList
 from person_pb2_grpc import PersonServiceServicer, add_PersonServiceServicer_to_server
-#from app.udaconnect.services import PersonService
+
+from app.udaconnect.services import PersonService
+
+from wsgi import app
 
 
 logging.basicConfig(level=logging.DEBUG)
@@ -16,20 +19,20 @@ class PersonServicer(PersonServiceServicer):
     def Get(self, request, context):
         logger.info('Received a message! GET')
         print('Received a message! GET')
-        #all_persons = PersonService.retrieve_all()
 
         result = PersonMessageList()
 
+        with app.app_context():
+            all_persons = PersonService.retrieve_all()
+            for person in all_persons:
+                grpc_person = PersonMessage (
+                    id = person.id,
+                    first_name = person.first_name,
+                    last_name = person.last_name,
+                    company_name = person.company_name
+                )
 
-        # for person in all_persons:
-        #     grpc_person = PersonMessage (
-        #         id = person.id,
-        #         first_name = person.first_name,
-        #         last_name = person.last_name,
-        #         company_name = person.company_name
-        #     )
-
-        #     result.persons.append(grpc_person)
+                result.persons.append(grpc_person)
 
         logger.info(result)
         print('Response:', result)

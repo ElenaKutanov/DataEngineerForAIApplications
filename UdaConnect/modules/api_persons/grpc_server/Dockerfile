@@ -1,18 +1,13 @@
-FROM python:3.9-alpine
+FROM elenakutanov/udaconnect-api-persons:latest
 
-WORKDIR .
-
-RUN apk add --no-cache gcc musl-dev linux-headers geos libc-dev postgresql-dev
-
-COPY ./requirements.txt requirements.txt
-
-RUN python -m pip install --upgrade pip
-RUN pip install -r requirements.txt
+RUN mkdir -p /grpc_server
+WORKDIR /grpc_server
 
 EXPOSE 5004
 
-COPY . .
+COPY . /grpc_server
+ENV PYTHONPATH /grpc_server:/restful:/restful/app
 
 # RUN python -m grpc_tools.protoc -I./ --python_out=./ --grpc_python_out=./ person.proto
 
-CMD ["python", "./grpc_server.py"]
+CMD ["python", "/grpc_server/grpc_server.py"]

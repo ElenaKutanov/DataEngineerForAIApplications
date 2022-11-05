@@ -1,16 +1,18 @@
 FROM python:3.9-alpine
 
-WORKDIR .
+RUN mkdir -p /restful
+WORKDIR /restful
 
 RUN apk add --no-cache gcc musl-dev linux-headers geos libc-dev postgresql-dev
 
-COPY ./requirements.txt requirements.txt
+COPY ./requirements.txt /restful/requirements.txt
 
 RUN python -m pip install --upgrade pip
-RUN pip install -r requirements.txt
+RUN pip install -r /restful/requirements.txt
 
 EXPOSE 5003
 
-COPY . .
+COPY . /restful
+ENV PYTHONPATH /restful
 
 CMD ["flask", "run", "--host", "0.0.0.0", "--port", "5003"]

@@ -28,6 +28,8 @@ class ConnectionService:
         large datasets. This is by design: what are some ways or techniques to help make this data integrate more
         smoothly for a better user experience for API consumers?
         """
+        result: List[Connection] = []
+
         locations: List = db.session.query(Location).filter(
             Location.person_id == person_id
         ).filter(Location.creation_time < end_date).filter(
@@ -36,7 +38,11 @@ class ConnectionService:
 
         # Cache all users in memory for quick lookup
         persons = grpc_client.persons_retrieve_all()
-        logger.info('persons from grpc:', persons)
+        logger.info(f'persons from grpc: {persons}')
+        if len(persons) == 0:
+            logger.info(f'Persons from grpc are empty!')
+            return result
+
         person_map: Dict[str, Person] = {person.id: person for person in persons}
 
         # Prepare arguments for queries
@@ -63,7 +69,7 @@ class ConnectionService:
         AND     TO_DATE(:end_date, 'YYYY-MM-DD') > creation_time;
         """
         )
-        result: List[Connection] = []
+        
         for line in tuple(data):
             for (
                 exposed_person_id,

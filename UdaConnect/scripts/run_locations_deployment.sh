@@ -15,8 +15,3 @@ cd ..
 # Tag and push the images to DockerHub
 docker image tag udaconnect-api-locations:latest elenakutanov/udaconnect-api-locations:latest
 docker push elenakutanov/udaconnect-api-locations:latest
-
-# Apply deployments
-kubectl apply -f deployment/
-
-kubectl get pods

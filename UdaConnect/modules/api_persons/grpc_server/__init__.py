@@ -2,6 +2,7 @@ import sys
 
 sys.path.append("..")
 sys.path.append("...")
+sys.path.append('restful/app')
 sys.path.append('app/udaconnect')
 
 import person_pb2

@@ -10,12 +10,10 @@ kubectl delete deployment udaconnect-api-persons
 kubectl delete services udaconnect-api-persons
 
 # Build new images
-# Moved to get access to parent folder
-cd modules/api_persons/restful
-docker build -t udaconnect-api-persons .
-cd ../grpc_server
-docker build -t udaconnect-api-persons-grpc .
-cd ../../..
+# Moved to get access to parent folderä
+cd modules/api_persons
+docker-compose build
+cd ../..
 
 
 # Tag and push the images to DockerHub
