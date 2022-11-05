@@ -39,11 +39,8 @@ class ConnectionService:
         # Cache all users in memory for quick lookup
         persons = grpc_client.persons_retrieve_all()
         logger.info(f'persons from grpc: {persons}')
-        if len(persons) == 0:
-            logger.info(f'Persons from grpc are empty!')
-            return result
 
-        person_map: Dict[str, Person] = {person.id: person for person in persons}
+        person_map: Dict[str, Person] = {person.id: person for person in persons.persons}
 
         # Prepare arguments for queries
         data = []
