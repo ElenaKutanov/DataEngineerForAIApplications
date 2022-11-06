@@ -12,12 +12,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:30004/api/persons/1/connection?start_date=2020-01-01&end_date=2020-12-30&distance=5",
+					"raw": "http://localhost:30002/api/persons/1/connection?start_date=2020-01-01&end_date=2020-12-30&distance=5",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "30004",
+					"port": "30002",
 					"path": [
 						"api",
 						"persons",
@@ -89,12 +89,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:30002/api/locations",
+					"raw": "http://localhost:30001/api/locations",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "30002",
+					"port": "30001",
 					"path": [
 						"api",
 						"locations"
@@ -109,12 +109,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:30002/api/locations/31",
+					"raw": "http://localhost:30001/api/locations/31",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "30002",
+					"port": "30001",
 					"path": [
 						"api",
 						"locations",
