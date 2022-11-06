@@ -1,10 +1,13 @@
 FROM elenakutanov/udaconnect-api-persons:latest
 
+RUN mkdir -p /grpc_server
+WORKDIR /grpc_server
+
 EXPOSE 5004
 
-COPY . .
-ENV PYTHONPATH /grpc_server:/restful/app
+COPY . /grpc_server
+ENV PYTHONPATH /grpc_server:/restful:/restful/app
 
-# RUN python -m grpc_tools.protoc -I./ --python_out=./ --grpc_python_out=./ person.proto
+RUN python -m grpc_tools.protoc -I/grpc_server/ --python_out=/grpc_server/ --grpc_python_out=/grpc_server/ /grpc_server/person.proto
 
-CMD ["python", "./grpc_server.py"]
+CMD ["python", "/grpc_server/grpc_server.py"]

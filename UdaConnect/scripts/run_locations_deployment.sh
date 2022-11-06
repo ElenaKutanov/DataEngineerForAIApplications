@@ -7,10 +7,7 @@ kubectl delete deployment udaconnect-api-locations
 kubectl delete services udaconnect-api-locations
 
 # Build new images
-# Moved to get access to parent folder
-cd modules
-docker build -t udaconnect-api-locations -f api_locations/Dockerfile .
-cd ..
+docker build -t udaconnect-api-locations modules/api_locations/
 
 # Tag and push the images to DockerHub
 docker image tag udaconnect-api-locations:latest elenakutanov/udaconnect-api-locations:latest
