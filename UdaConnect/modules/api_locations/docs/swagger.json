@@ -1,0 +1,238 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "version" : "1.0.0",
+    "title" : "udaconnect-api",
+    "description" : "The API for the Udacity Udaconnect project"
+  },
+  "paths" : {
+    "/persons" : {
+      "post" : {
+        "tags" : [ "Persons" ],
+        "description" : "person creating",
+        "responses" : {
+          "200" : {
+            "description" : "created person",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/PersonSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/persons/" : {
+      "get" : {
+        "tags" : [ "Persons" ],
+        "description" : "get persons",
+        "responses" : {
+          "200" : {
+            "description" : "all persons",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/PersonSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/persons/{person_id}" : {
+      "get" : {
+        "tags" : [ "Persons" ],
+        "description" : "get person by id",
+        "parameters" : [ {
+          "name" : "person_id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "found person",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/PersonSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/locations" : {
+      "post" : {
+        "tags" : [ "Locations" ],
+        "description" : "location creating",
+        "responses" : {
+          "200" : {
+            "description" : "created location",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/LocationSchema"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get" : {
+        "tags" : [ "Locations" ],
+        "description" : "get all locations",
+        "responses" : {
+          "200" : {
+            "description" : "all locations",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/LocationSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/locations/{location_id}" : {
+      "get" : {
+        "tags" : [ "Locations" ],
+        "description" : "get location by id",
+        "parameters" : [ {
+          "name" : "location_id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/LocationSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/persons/{person_id}/connection" : {
+      "get" : {
+        "tags" : [ "Connection" ],
+        "description" : "return connections bounded by start and end date and by person id",
+        "parameters" : [ {
+          "name" : "start_date",
+          "in" : "query",
+          "required" : true,
+          "schema" : {
+            "type" : "object"
+          }
+        }, {
+          "name" : "end_date",
+          "in" : "query",
+          "required" : true,
+          "schema" : {
+            "type" : "object"
+          }
+        }, {
+          "name" : "distance",
+          "in" : "query",
+          "required" : false,
+          "schema" : {
+            "type" : "object"
+          }
+        }, {
+          "name" : "person_id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ConnectionSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "LocationSchema" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer"
+          },
+          "person_id" : {
+            "type" : "integer"
+          },
+          "longitude" : {
+            "type" : "string"
+          },
+          "latitude" : {
+            "type" : "string"
+          },
+          "creation_time" : {
+            "type" : "object"
+          }
+        }
+      },
+      "PersonSchema" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer"
+          },
+          "first_name" : {
+            "type" : "string"
+          },
+          "last_name" : {
+            "type" : "string"
+          },
+          "company_name" : {
+            "type" : "string"
+          }
+        }
+      },
+      "ConnectionSchema" : {
+        "type" : "object",
+        "properties" : {
+          "location" : {
+            "type" : "object"
+          },
+          "person" : {
+            "type" : "object"
+          }
+        }
+      }
+    }
+  },
+  "servers" : [ {
+    "description" : "SwaggerHub API Auto Mocking",
+    "url" : "https://virtserver.swaggerhub.com/ELENAAKIMENKO/Udacconnect-api/1.0.0"
+  } ]
+}
