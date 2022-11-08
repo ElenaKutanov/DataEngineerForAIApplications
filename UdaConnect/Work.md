@@ -13,7 +13,7 @@ udaconnect-app   NodePort    10.43.27.184    <none>        3000:30000/TCP   84s
 
 The dependancy graph:
 
-![alt text](DependencyGraph.png)
+![alt text](InitialDependencyGraph.png)
 
 - It's no need to divide frontend on services, because it is only one rote used and two components, which are connected the route.
 
