@@ -1,0 +1,16 @@
+There were three services in the initial app.
+- database (Postgres)
+- backend (udaconnect-api)
+- frontend (udaconnect-app)
+
+I don't see the need to divide the frontend on microservices, there are two components that different teams can develop.
+
+On the backend side, I see three clear parts which can be divided into microservices to get separate requests processing (Locations, Persons and Connection).
+The Location was easily separated because has loose coupling with other parts of the monolith.
+After that divided Persons and Locations. Since they also have service coupling, I added the gRPC communication between microservices.
+
+There is a gRPC-server on Persons pod but in a separated container. The gRPC-server use the Persons RESTful docker image, so it is possible to share the RESTful app context with the gRPC-server.
+I used docker-compose to create two Persons microservice images (udaconnect-api-pesons and udaconnect-api-persons-grpc) in docker. Also, I made changes for two containers in service and deployment.
+Then gRPC-request was added to Connection app.
+
+The bug for the route "/locations" in the initial code was fixed.

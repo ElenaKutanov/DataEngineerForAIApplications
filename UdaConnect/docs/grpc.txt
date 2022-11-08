@@ -1,0 +1,8 @@
+Making sample gRPC request using Postman:
+
+- Create an APIs, using person.proto file.
+- Create new gRPC request with following:
+-- server url: localhost:30004
+-- Protobuf API => Protobuf APIs in this workspace => <your APIs name> => Get
+
+After pressing "Invoke" button, you will get all persons data.
