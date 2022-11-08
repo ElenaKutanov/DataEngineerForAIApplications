@@ -12,8 +12,6 @@ def create_app(env=None):
     from app.config import config_by_name
     from app.routes import register_routes
 
-    #doc_api_blueprint = Blueprint('doc_api', __name__, url_prefix='/doc_api')
-
     SWAGGER_URL = '/doc'
     API_URL = '/docs/swagger.json'
 
@@ -22,8 +20,6 @@ def create_app(env=None):
         API_URL,
         config={ "app_name": "Udaconnect" } 
     )
-
-    # doc_api = Api(doc_api_blueprint)
 
     app = Flask(__name__)
 
@@ -35,7 +31,7 @@ def create_app(env=None):
 
     app.config.from_object(config_by_name[env or "test"])
 
-    api = Api(app, title="UdaConnect API", version="0.1.0", doc=False)
+    api = Api(app, title="UdaConnect API", version="0.1.0")
 
     CORS(app)  # Set CORS for development
 
