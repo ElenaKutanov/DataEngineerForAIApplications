@@ -2,8 +2,10 @@ apiVersion: v1
 kind: ConfigMap
 data:
   DB_USERNAME: "ct_admin"
-  DB_NAME: "geoconnections"
-  DB_HOST: "postgres"
+  LC_DB_NAME: "locations"
+  LC_DB_HOST: "postgres-locations"
+  PS_DB_NAME: "persons"
+  PS_DB_HOST: "postgres-persons"
   DB_PORT: "5432"
 metadata:
   name: db-env

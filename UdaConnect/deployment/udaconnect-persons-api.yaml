@@ -54,12 +54,12 @@ spec:
           valueFrom:
             configMapKeyRef:
               name: db-env
-              key: DB_NAME
+              key: PS_DB_NAME
         - name: DB_HOST
           valueFrom:
             configMapKeyRef:
               name: db-env
-              key: DB_HOST
+              key: PS_DB_HOST
         - name: DB_PORT
           valueFrom:
             configMapKeyRef:
@@ -84,12 +84,12 @@ spec:
           valueFrom:
             configMapKeyRef:
               name: db-env
-              key: DB_NAME
+              key: PS_DB_NAME
         - name: DB_HOST
           valueFrom:
             configMapKeyRef:
               name: db-env
-              key: DB_HOST
+              key: PS_DB_HOST
         - name: DB_PORT
           valueFrom:
             configMapKeyRef:
