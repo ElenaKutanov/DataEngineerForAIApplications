@@ -1,0 +1,15 @@
+version: "3"
+services:
+  web:
+    build:
+        context: ./restful
+    image: udaconnect-api-locations
+    ports:
+       - "5001:5001"
+   
+  grpc:
+    build:
+        context: ./kafka
+    image: udaconnect-api-locations-kafka
+    ports:
+       - "5005:5005"

@@ -115,4 +115,4 @@ udaconnect-api-locations                 latest    74b059ee834f   21 hours ago  
 > kubectl describe <POD_NAME>
 
 # Check logs in all containers!
-> kubectl logs -f deployment/udaconnect-api-persons --all-containers=true --since=10m
+> kubectl logs -f deployment/udaconnect-api-locations --all-containers=true --since=10m

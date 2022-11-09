@@ -6,9 +6,13 @@ metadata:
   name: udaconnect-api-locations
 spec:
   ports:
-  - name: "5001"
+  - name: "rest"
     port: 5001
     nodePort: 30001
+  - name: "kafka"
+    port: 5005
+    targetPort: 5005
+    nodePort: 30005
   selector:
     service: udaconnect-api-locations
   type: NodePort
@@ -32,7 +36,8 @@ spec:
       containers:
       - image: elenakutanov/udaconnect-api-locations:latest
         name: udaconnect-api-locations
-        imagePullPolicy: Always
+        ports:
+        - containerPort: 5001
         env:
         - name: DB_USERNAME
           valueFrom:
@@ -59,4 +64,33 @@ spec:
             configMapKeyRef:
               name: db-env
               key: DB_PORT
-      restartPolicy: Always
+      - image: elenakutanov/udaconnect-api-locations-kafka:latest
+        name: udaconnect-locations-kafka-consumer
+        ports:
+        - containerPort: 5005
+        env:
+        - name: DB_USERNAME
+          valueFrom:
+            configMapKeyRef:
+              name: db-env
+              key: DB_USERNAME
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: DB_PASSWORD
+        - name: DB_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: db-env
+              key: LC_DB_NAME
+        - name: DB_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: db-env
+              key: LC_DB_HOST
+        - name: DB_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: db-env
+              key: DB_PORT

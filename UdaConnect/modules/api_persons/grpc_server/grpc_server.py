@@ -5,9 +5,7 @@ import grpc
 from concurrent import futures
 from person_pb2 import PersonMessage, PersonMessageList
 from person_pb2_grpc import PersonServiceServicer, add_PersonServiceServicer_to_server
-
 from app.udaconnect.services import PersonService
-
 from wsgi import app
 
 
