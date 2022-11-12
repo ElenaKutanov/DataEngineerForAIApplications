@@ -8,6 +8,7 @@ spec:
   ports:
   - name: "rest"
     port: 5001
+    targetPort: 5001
     nodePort: 30001
   - name: "kafka"
     port: 5005

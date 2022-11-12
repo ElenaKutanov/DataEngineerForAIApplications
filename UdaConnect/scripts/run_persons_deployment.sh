@@ -10,7 +10,7 @@ kubectl delete deployment udaconnect-api-persons
 kubectl delete services udaconnect-api-persons
 
 # Build new images
-# Moved to get access to parent folderä
+# Moved to get access to parent folder
 cd modules/api_persons
 docker-compose build
 cd ../..

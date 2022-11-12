@@ -1,4 +1,3 @@
-
 import logging
 import json
 
@@ -12,12 +11,19 @@ logger = logging.getLogger("udaconnect-api-location-kafka")
 
 class Consumer:
   # To consume latest messages and auto-commit offsets
-  consumer = KafkaConsumer('udaconnect-location',
-                           group_id='udaconnect',
-                           bootstrap_servers=['localhost:30005'])
+  # consumer = KafkaConsumer('udaconnect-location',
+  #                          group_id='udaconnect',
+  #                          bootstrap_servers=['udaconnect-kafka-broker:5006'])
+
+  consumer = KafkaConsumer(bootstrap_servers=['udaconnect-kafka-brocker:5007'])
+  
+
   for message in consumer:
       # message value and key are raw bytes -- decode if necessary!
       # e.g., for unicode: `message.value.decode('utf-8')`
+      logger.info("%s:%d:%d: key=%s value=%s" % (message.topic, message.partition,
+                                            message.offset, message.key,
+                                            message.value))
       print ("%s:%d:%d: key=%s value=%s" % (message.topic, message.partition,
                                             message.offset, message.key,
                                             message.value))
