@@ -8,7 +8,7 @@ logger = logging.getLogger("udaconnect-kafka-producer")
 
 class Server:
     def __init__(self):
-        self.producer = KafkaProducer(bootstrap_servers=['udaconnect-kafka-brocker:5007'],
+        self.producer = KafkaProducer(bootstrap_servers=['udaconnect-kafka-brocker:5008'],
                       api_version=(0,11,5),
                       value_serializer=lambda x: dumps(x).encode('utf-8'))
 

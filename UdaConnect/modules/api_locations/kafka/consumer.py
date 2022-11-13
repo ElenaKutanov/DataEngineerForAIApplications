@@ -15,7 +15,7 @@ class Consumer:
   #                          group_id='udaconnect',
   #                          bootstrap_servers=['udaconnect-kafka-broker:5006'])
 
-  consumer = KafkaConsumer(bootstrap_servers=['udaconnect-kafka-brocker:5007'])
+  consumer = KafkaConsumer(bootstrap_servers=['udaconnect-kafka-brocker:5008'])
   
 
   for message in consumer:

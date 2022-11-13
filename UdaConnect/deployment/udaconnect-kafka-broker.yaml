@@ -10,11 +10,11 @@ spec:
   type: NodePort
   ports:
   - name: "zookeeper"
-    port: 5008
-    targetPort: 5008
-  - name: "broker"
     port: 5007
     targetPort: 5007
+  - name: "broker"
+    port: 5008
+    targetPort: 5008
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -35,9 +35,11 @@ spec:
       containers:
       - image: elenakutanov/udaconnect-kafka-broker:latest
         name: udaconnect-kafka-zookeeper
-        ports:
-        - containerPort: 5008
-      - image: elenakutanov/udaconnect-kafka-broker:latest
-        name: udaconnect-kafka-broker
+        command: ["sh", "/bin/zookeeper-server-start.sh", "/config/zookeeper.properties"]
         ports:
         - containerPort: 5007
+      - image: elenakutanov/udaconnect-kafka-broker:latest
+        name: udaconnect-kafka-broker
+        command: ["sh", "bin/kafka-server-start.sh", "config/server.properties"]
+        ports:
+        - containerPort: 5008
