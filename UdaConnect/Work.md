@@ -33,7 +33,8 @@ copy paste in C:\Users\elena\.kube\config
 > kubectl describe services
 > kubectl apply -f deployment/
 > kubectl get pods
-> sh scripts/run_db_command.sh <POD_NAME>
+> sh scripts/run_db_locations.sh <POD_NAME>
+> sh scripts/run_db_persons.sh <POD_NAME>
 
 > docker rmi udaconnect-app
 > docker rmi elenakutanov/udaconnect-app

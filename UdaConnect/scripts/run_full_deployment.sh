@@ -1,3 +1,4 @@
+sh scripts/run_kafka_deployment.sh
 sh scripts/run_connection_deployment.sh
 sh scripts/run_persons_deployment.sh
 sh scripts/run_frontend_deployment.sh
