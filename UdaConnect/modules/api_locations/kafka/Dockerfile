@@ -8,4 +8,4 @@ EXPOSE 5005
 COPY . /kafka
 ENV PYTHONPATH /kafka:/restful:/restful/app
 
-CMD ["python", "/kafka/consumer.py"]
+CMD ["sleep", "3600"]

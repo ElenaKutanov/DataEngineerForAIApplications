@@ -1,5 +1,6 @@
 import logging
 import json
+import time
 
 from kafka import KafkaProducer
 
@@ -8,9 +9,9 @@ logger = logging.getLogger("udaconnect-kafka-producer")
 
 class Server:
     def __init__(self):
-        self.producer = KafkaProducer(bootstrap_servers=['udaconnect-kafka-brocker:5008'],
+        self.producer = KafkaProducer(bootstrap_servers=['udaconnect-kafka-broker:5008'],
                       api_version=(0,11,5),
-                      value_serializer=lambda x: dumps(x).encode('utf-8'))
+                      value_serializer=lambda x: json.dumps(x).encode('utf-8'))
 
     def send_location(self, person_id, creation_time):
 
@@ -26,5 +27,6 @@ class Server:
 if __name__ == "__main__":
     server = Server()
     logger.info(f'KafkaProducer run!')
-    for _ in range(10):
-        server.send_location(5, '2020-08-15 10:37:06.000000')
+    for _ in range(100):
+        server.send_location(11, '2020-08-15 10:37:06.000000')
+        time.sleep(5)

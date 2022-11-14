@@ -10,12 +10,12 @@ logger = logging.getLogger("udaconnect-api-location-kafka")
 
 
 class Consumer:
-  # To consume latest messages and auto-commit offsets
-  # consumer = KafkaConsumer('udaconnect-location',
-  #                          group_id='udaconnect',
-  #                          bootstrap_servers=['udaconnect-kafka-broker:5006'])
+  To consume latest messages and auto-commit offsets
+  consumer = KafkaConsumer('udaconnect-location',
+                           group_id='udaconnect',
+                           bootstrap_servers=['udaconnect-kafka-broker:5008'])
 
-  consumer = KafkaConsumer(bootstrap_servers=['udaconnect-kafka-brocker:5008'])
+  #consumer = KafkaConsumer(bootstrap_servers=['udaconnect-kafka-broker:5008'])
   
 
   for message in consumer:

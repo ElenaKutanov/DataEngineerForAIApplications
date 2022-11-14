@@ -40,6 +40,6 @@ spec:
         - containerPort: 5007
       - image: elenakutanov/udaconnect-kafka-broker:latest
         name: udaconnect-kafka-broker
-        command: ["sh", "bin/kafka-server-start.sh", "config/server.properties"]
+        command: ["sh", "bin/kafka-server-start.sh", "/config/server.properties"]
         ports:
         - containerPort: 5008
