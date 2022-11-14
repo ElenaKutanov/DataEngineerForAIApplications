@@ -11,7 +11,7 @@ class Server:
     def __init__(self):
         self.producer = KafkaProducer(bootstrap_servers=['udaconnect-kafka-broker:5008'],
                       api_version=(0,11,5),
-                      value_serializer=lambda x: json.dumps(x).encode('utf-8'))
+                      value_serializer=lambda m: json.dumps(m).encode('utf-8'))
 
     def send_location(self, person_id, creation_time):
 
@@ -19,7 +19,7 @@ class Server:
                     "latitude": "-122.2908829999999938",
                     "longitude": "37.5536299999999983",
                     "creation_time": creation_time }
-        self.producer.send('udaconnect-location', json.dumps(message))
+        self.producer.send('udaconnect-location', message)
         logger.info(f'KafkaProducer message sent: {message}')
         self.producer.flush()
 

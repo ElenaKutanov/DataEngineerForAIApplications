@@ -8,7 +8,7 @@ from app.udaconnect.schema_location import LocationSchema
 from geoalchemy2.functions import ST_AsText, ST_Point
 
 
-logging.basicConfig(level=logging.WARNING)
+logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger("udaconnect-lcations-api")
 
 
