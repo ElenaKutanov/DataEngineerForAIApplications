@@ -27,6 +27,6 @@ class Server:
 if __name__ == "__main__":
     server = Server()
     logger.info(f'KafkaProducer run!')
-    for _ in range(100):
-        server.send_location(11, '2020-08-15 10:37:06.000000')
+    for _ in range(10):
+        server.send_location(5, '2020-08-15 10:37:06.000000')
         time.sleep(5)
