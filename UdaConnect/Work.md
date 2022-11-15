@@ -114,7 +114,6 @@ udaconnect-api-locations                 latest    74b059ee834f   21 hours ago  
 > kubectl exec --stdin --tty udaconnect-api-persons-866b867d46-4hstx -- /bin/sh
 > kubectl exec --stdin -c udaconnect-persons-grpc-server --tty udaconnect-api-persons-866b867d46-4hstx -- /bin/sh
 > kubectl exec --stdin -c udaconnect-locations-kafka-consumer --tty pod -- /bin/sh
-> kubectl exec --stdin -c udaconnect-locations-kafka-consumer --tty pod -- /bin/sh
 > kubectl describe <POD_NAME>
 
 # Check logs in all containers!

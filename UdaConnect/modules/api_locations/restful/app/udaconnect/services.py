@@ -5,7 +5,7 @@ from typing import Dict, List
 from app import db
 from app.udaconnect.model_location import Location
 from app.udaconnect.schema_location import LocationSchema
-from geoalchemy2.functions import ST_AsText, ST_Point
+from geoalchemy2.functions import ST_Point
 
 
 logging.basicConfig(level=logging.DEBUG)

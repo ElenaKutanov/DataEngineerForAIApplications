@@ -1,9 +1,11 @@
 import logging
 import json
+import sys
+
+sys.path.append("../restful")
 
 from kafka import KafkaConsumer
 from app.udaconnect.services import LocationService
-from app.udaconnect.model_location import Location
 from wsgi import app
 
 logging.basicConfig(level=logging.DEBUG)
