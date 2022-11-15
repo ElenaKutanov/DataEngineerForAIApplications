@@ -1,8 +1,5 @@
 import logging
 import json
-import sys
-
-sys.path.append("../restful")
 
 from kafka import KafkaConsumer
 from app.udaconnect.services import LocationService
