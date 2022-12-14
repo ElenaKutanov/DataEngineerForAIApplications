@@ -3,7 +3,7 @@ LABEL maintainer="Elena Kutanov"
 
 WORKDIR /opt/techtrends
 
-COPY ./project6/techtrends ./
+COPY . .
 RUN apk add cmd:dir
 RUN dir -s
 
